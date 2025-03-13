@@ -1,51 +1,84 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #F8E1F4; /* Light Pink background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0); /* Black with opacity */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.container {
-    text-align: center;
-    border: 2px solid #e63e8f; /* Pink border */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 15px;
-}
-
-#gameCanvas {
-    background-color: #fff;
-    border: 2px solid #e63e8f;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    margin-top: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    text-align: center;
 }
 
 button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 1.2em;
-    background-color: #e63e8f;
-    color: white;
+    background-color: pink;
     border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
     cursor: pointer;
-    border-radius: 5px;
 }
 
 button:hover {
-    background-color: #d21a75;
+    background-color: #ff77a9;
 }
 
-#score {
-    margin-top: 20px;
-    font-size: 1.5em;
-    color: #e63e8f;
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .game-area {
+    width: 100%;
+    height: 300px; /* Adjust height for mobile */
+  }
+
+  #gameCanvas {
+    width: 100%;
+    height: 100%;
+  }
+
+  .controls {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  button {
+    width: 80%;
+    font-size: 1rem;
+    padding: 15px;
+  }
+
+  #scoreContainer {
+    font-size: 1rem;
+  }
+
+  #playButton {
+    display: block;
+  }
 }
 
-#rank {
-    margin-top: 10px;
-    font-size: 1.2em;
-    color: #e63e8f;
+@media (min-width: 769px) {
+  #playButton {
+    display: none;
+  }
 }
