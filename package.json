@@ -1,9 +1,11 @@
 {
-  "name": "succint",
+  "name": "succinct",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node backend/server.js",
+    "build": "copyfiles -u 1 frontend/**/* dist/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,5 +14,8 @@
   "dependencies": {
     "express": "^4.21.2",
     "succinct": "^0.0.1"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1"
   }
 }
