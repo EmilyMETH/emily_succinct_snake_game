@@ -6,17 +6,17 @@ const verifyProof = require('./verifyProof');
 const app = express();
 const PORT = 3000;
 
-app.use(express.static(path.join(__dirname, '../frontend')));
+// Serve static files from the dist directory
+app.use(express.static(path.join(__dirname, '../dist')));
 
 // Endpoint to serve the game HTML
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/index.html'));
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
 // Endpoint to generate ZK proof for the game score
 app.post('/generate-proof', (req, res) => {
-    // This is where you generate a ZK proof for the game score
-    const score = req.body.score;  // You can send the score from the frontend
+    const score = req.body.score;
     const proof = generateProof(score);
 
     res.json({ proof });

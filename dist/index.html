@@ -3,30 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake Game</title>
-    <link rel="stylesheet" href="style.css">
+    <title>SUCCINCT SNAKE GAME</title>
+    <link rel="stylesheet" href="style.css">  <!-- Correct path to CSS -->
 </head>
 <body>
     <div class="container">
-        <h1>Snake Game</h1>
+        <h1>SUCCINCT SNAKE GAME</h1>
         <div class="game-area">
             <canvas id="gameCanvas" width="400" height="400"></canvas>
         </div>
-        
+
         <div class="controls">
             <button id="startBtn">Start</button>
             <button id="pauseBtn">Pause</button>
             <button id="stopBtn">Stop</button>
         </div>
 
-        <!-- Play button visible on mobile only -->
-        <div id="playButton" class="controls">
-            <button id="playMobileBtn">Play</button>
-        </div>
-
         <div id="scoreContainer">
             <p>Score: <span id="score">0</span></p>
         </div>
+
+        <!-- New High Score / Congratulation Message -->
+        <p id="congratulationMessage">Congratulations! New High Score!</p>
     </div>
 
     <!-- Game Over Modal -->
@@ -38,6 +36,16 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Mobile Controls -->
+    <div id="mobileControls" class="mobile-controls">
+        <button id="upBtn" class="control-btn">Up</button>
+        <div class="horizontal-controls">
+            <button id="leftBtn" class="control-btn">Left</button>
+            <button id="rightBtn" class="control-btn">Right</button>
+        </div>
+        <button id="downBtn" class="control-btn">Down</button>
+    </div>
+
+    <script src="script.js"></script>  <!-- Correct path to JS -->
 </body>
 </html>
