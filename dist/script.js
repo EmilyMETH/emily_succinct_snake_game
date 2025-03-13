@@ -19,7 +19,7 @@ let highScore = 0; // Track high score
 let gameInterval;
 let isGamePaused = false;
 let gameSpeed = 100; // Initial game speed (time in milliseconds per frame)
-let initialSpeed = 100; // Starting speed
+let initialSpeed = 400; // Starting speed
 let acceleration = 5; // Time (ms) by which to decrease the interval when snake eats food
 let lastSpeedIncreaseTime = 0; // Last time the speed was increased
 let speedIncreaseInterval = 5000; // Time interval (ms) after which speed increases

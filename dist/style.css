@@ -123,7 +123,6 @@ button:hover {
     opacity: 1;
 }
 
-
 /* Mobile Controls Styling */
 #mobileControls {
     display: none; /* Hidden by default, will show on mobile devices */
@@ -205,5 +204,26 @@ button:hover {
         width: 60px;
         height: 60px;
         font-size: 20px;
+    }
+
+    /* Make the congratulatory message smaller for mobile */
+    #congratulationMessage {
+        font-size: 18px;
+        padding: 15px;
+    }
+
+    /* Adjust game over modal on mobile */
+    .modal-content {
+        width: 80%;
+        font-size: 14px;
+    }
+}
+
+/* Adjust the game over message container */
+@media (max-width: 600px) {
+    #congratulationMessage {
+        width: 90%; /* Make it fit the mobile screen */
+        font-size: 18px; /* Smaller font size */
+        padding: 15px;
     }
 }
