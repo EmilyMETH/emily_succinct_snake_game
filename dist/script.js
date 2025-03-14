@@ -16,11 +16,12 @@ let score;
 let highScore = 0;
 let gameInterval;
 let isGamePaused = false;
-let gameSpeed = 100;
+let gameSpeed = 400;
 let initialSpeed = 400;
-let acceleration = 5;
+let acceleration = 150;
 let lastSpeedIncreaseTime = 0;
-let speedIncreaseInterval = 5000;
+let speedIncreaseInterval = 20000;
+let maxSpeed = 20;
 
 function initGame() {
     snake = [{ x: 10, y: 10 }];
@@ -45,7 +46,7 @@ function updateScore() {
 function createFood() {
     let x = Math.floor(Math.random() * (gameCanvas.width / 20));
     let y = Math.floor(Math.random() * (gameCanvas.height / 20));
-    return { x: x, y: y };
+    return { x, y };
 }
 
 function checkCollision() {
@@ -81,15 +82,19 @@ restartBtn.addEventListener('click', () => {
 
 function gameLoop() {
     if (isGamePaused) return;
+
     const currentTime = Date.now();
-    if (currentTime - lastSpeedIncreaseTime > speedIncreaseInterval) {
-        if (gameSpeed > 20) {
+
+    if (currentTime - lastSpeedIncreaseTime >= speedIncreaseInterval) {
+        if (gameSpeed > maxSpeed) {
             gameSpeed -= acceleration;
             lastSpeedIncreaseTime = currentTime;
             clearInterval(gameInterval);
             gameInterval = setInterval(gameLoop, gameSpeed);
+            console.log("New Speed:", gameSpeed);
         }
     }
+
     const newHead = { ...snake[0] };
     switch (direction) {
         case 'UP':
@@ -106,6 +111,7 @@ function gameLoop() {
             break;
     }
     snake.unshift(newHead);
+
     if (newHead.x === food.x && newHead.y === food.y) {
         score += 1;
         updateScore();
@@ -117,9 +123,11 @@ function gameLoop() {
     } else {
         snake.pop();
     }
+
     if (checkCollision()) {
         gameOver();
     }
+
     ctx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
     snake.forEach((segment) => {
         ctx.fillStyle = 'pink';
