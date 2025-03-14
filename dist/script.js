@@ -78,11 +78,13 @@ function checkCollision() {
     return false;
 }
 
-// Show congratulatory message smoothly (no shake)
+// Show congratulatory message smoothly (with fade-in effect)
 function showCongratulatoryMessage() {
-    congratulationMessage.classList.add('show'); // Add the show class to fade it in
+    congratulationMessage.classList.add('show'); // Add the 'show' class to make it visible
+
+    // After 3 seconds, hide the message by removing the 'show' class
     setTimeout(() => {
-        congratulationMessage.classList.remove('show'); // Remove the class after 3 seconds
+        congratulationMessage.classList.remove('show'); // Fade out and hide
     }, 3000); // Hide after 3 seconds
 }
 
@@ -190,28 +192,27 @@ function stopGame() {
 // Button events
 startBtn.addEventListener('click', function() {
     startGame();
-    startBtn.disabled = true; // Disable start button after starting
+    startBtn.disabled = true;
 });
 
 pauseBtn.addEventListener('click', function() {
     if (isGamePaused) {
-        resumeGame(); // If game is paused, resume it
+        resumeGame();
         pauseBtn.textContent = 'Pause';
     } else {
-        pauseGame(); // Pause the game
+        pauseGame();
         pauseBtn.textContent = 'Resume';
     }
 });
 
 stopBtn.addEventListener('click', function() {
-    stopGame(); // Stop the game
-    startBtn.disabled = false; // Enable start button again
-    pauseBtn.textContent = 'Pause'; // Reset pause button text
+    stopGame();
+    startBtn.disabled = false;
+    pauseBtn.textContent = 'Pause';
 });
 
 // Control the snake using keyboard (PC)
 document.addEventListener('keydown', function(event) {
-    // Arrow key movement
     if (event.key === 'ArrowUp' && direction !== 'DOWN') {
         direction = 'UP';
     } else if (event.key === 'ArrowDown' && direction !== 'UP') {
@@ -222,16 +223,15 @@ document.addEventListener('keydown', function(event) {
         direction = 'RIGHT';
     }
 
-    // Enter key handling for starting the game or restarting after Game Over
     if (event.key === 'Enter') {
         if (gameOverModal.style.display === 'block') {
-            gameOverModal.style.display = 'none'; // Hide the game over modal
-            initGame(); // Reset the game
-            startGame(); // Start the game again
-            startBtn.disabled = true; // Disable start button
-        } else if (startBtn.disabled === false) {
-            startGame(); // Start the game if it's not started yet
-            startBtn.disabled = true; // Disable start button after starting
+            gameOverModal.style.display = 'none';
+            initGame();
+            startGame();
+            startBtn.disabled = true;
+        } else if (!startBtn.disabled) {
+            startGame();
+            startBtn.disabled = true;
         }
     }
 });
@@ -264,26 +264,6 @@ rightButton.addEventListener('click', function() {
     if (direction !== 'LEFT') {
         direction = 'RIGHT';
     }
-});
-
-// Function to request fullscreen
-function requestFullscreen() {
-    if (gameCanvas.requestFullscreen) {
-        gameCanvas.requestFullscreen();
-    } else if (gameCanvas.mozRequestFullScreen) { // Firefox
-        gameCanvas.mozRequestFullScreen();
-    } else if (gameCanvas.webkitRequestFullscreen) { // Chrome, Safari, Opera
-        gameCanvas.webkitRequestFullscreen();
-    } else if (gameCanvas.msRequestFullscreen) { // IE/Edge
-        gameCanvas.msRequestFullscreen();
-    }
-}
-
-// Call this function when the game starts
-startBtn.addEventListener('click', function() {
-    requestFullscreen(); // Request fullscreen when the game starts
-    startGame();
-    startBtn.disabled = true;
 });
 
 // Initialize the game

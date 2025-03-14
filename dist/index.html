@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SUCCINCT SNAKE GAME</title>
-    <link rel="stylesheet" href="style.css">  <!-- Correct path to CSS -->
+    <link rel="stylesheet" href="style.css"> <!-- Correct path to CSS -->
 </head>
 <body>
     <div class="container">
@@ -13,17 +13,17 @@
             <canvas id="gameCanvas" width="400" height="400"></canvas>
         </div>
 
+        <!-- Regular Game Controls -->
         <div class="controls">
-            <button id="startBtn">Start</button>
-            <button id="pauseBtn">Pause</button>
-            <button id="stopBtn">Stop</button>
+            <button id="startBtn" class="game-control-btn">Start</button>
+            <button id="pauseBtn" class="game-control-btn">Pause</button>
+            <button id="stopBtn" class="game-control-btn">Stop</button>
         </div>
 
         <div id="scoreContainer">
             <p>Score: <span id="score">0</span></p>
         </div>
 
-        <!-- New High Score / Congratulation Message -->
         <p id="congratulationMessage">Congratulations! New High Score!</p>
     </div>
 
@@ -46,6 +46,6 @@
         <button id="downBtn" class="control-btn">Down</button>
     </div>
 
-    <script src="script.js"></script>  <!-- Correct path to JS -->
+    <script src="script.js"></script> <!-- Correct path to JS -->
 </body>
 </html>
